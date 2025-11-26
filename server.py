@@ -17,7 +17,8 @@ def server(socket):
 
     try:
         data = conn.recv(1024)
-        data.decode("ascii")
+        data_decoded = data.decode('utf-8')
+        print(data_decoded)
 
     except OSError as e:
         print(f"Error: {e}")
