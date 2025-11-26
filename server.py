@@ -7,13 +7,12 @@ def server(socket):
 
     # TCP
     socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    print("server started")
+    print("Server started.")
 
-    
-    
     socket.bind((HOST_CONNECTION,PORT))
     socket.listen()
     conn, addr = socket.accept()
+    print(f"Connection established with {addr}")
 
     try:
         data = conn.recv(1024)
@@ -22,8 +21,7 @@ def server(socket):
 
     except OSError as e:
         print(f"Error: {e}")
-
-    # print(f"{conn}, {addr} connected to the server!")
+        
     socket.close()
     
 
