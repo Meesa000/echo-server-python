@@ -16,7 +16,7 @@ def server(socket):
     conn, addr = socket.accept()
 
     try:
-        data = socket.recv(1024)
+        data = conn.recv(1024)
         data.decode("ascii")
 
     except OSError as e:
