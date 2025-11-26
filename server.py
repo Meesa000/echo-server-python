@@ -1,17 +1,32 @@
 import socket
 
-def server(socket):
+HOST_CONNECTION = "127.0.0.0"
+PORT = 7000  
 
-    HOST_CONNECTION = ''
-    PORT = 5000
+def server(socket):
 
     # TCP
     socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    print(f'socket: {socket}')
+    print("server started")
 
+    
+    
     socket.bind((HOST_CONNECTION,PORT))
-    listen = socket.listen()
-    accept = socket.accept()
+    socket.listen()
+    conn, addr = socket.accept()
 
-       
+    try:
+        socket.recv(1024)
+    except OSError as e:
+        print(f"Error: {e}")
+
+    # print(f"{conn}, {addr} connected to the server!")
+    socket.close()
+    
+
+   
+    
+
 server(socket)
+
+
